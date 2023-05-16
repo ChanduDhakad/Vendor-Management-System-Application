@@ -22,12 +22,18 @@ import com.jstigers.services.VendorService;
 
 
 @RestController
-@RequestMapping("/api/vendors")
+@RequestMapping
 public class VendorController {
 
     @Autowired
     private VendorService vendorService;
 
+    
+    @GetMapping()
+    public String welcomeMessage()  {
+         return "Vendor Management System Application Is Running";
+    }
+    
     @PostMapping("/registor")
     public ResponseEntity<Vendor> createVendor(@Valid @RequestBody Vendor vendor) throws VendorException {
         Vendor createdVendor = vendorService.createVendor(vendor);
